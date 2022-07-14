@@ -1,5 +1,7 @@
 # Atomic-Swap
 
+## Contracts to connect with JuiceBox contracts to facilitate an Atomic Swap of Member tokens to Index Tokens.
+
 Step 1. Deploy ERC20Terminal – Done Via Remix/Hardhat
 •	One Terminal per token, allows members to pay tokens into index project and receive index tokens
 •	Must interact with JBPrices contract to compute member token for index token (1:1) value
