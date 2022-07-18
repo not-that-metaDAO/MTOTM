@@ -13,13 +13,16 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 
 Step 1 - Calculate Price of Token for Feed
 - ($ value of tokens / $ETH price)  /  Project token amt  = Feed Price
+
 Step 2 - Create ‘fake price’ Feed Contract
 - Import IJBPriceFeed
 - Set currentPrice() = Feed Price
+
 Step 3 - Create Price Contract
 - addFeedFor(2, 1, Feed Contract)
 - Use 2 for currency param
 - Use 1 for base_currency param
+
 Step 4 - Create SingleTokenPaymentTerminalStore Contract
 - Use Price contract in constructor
 
