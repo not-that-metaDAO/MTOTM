@@ -1,5 +1,5 @@
 <p align="center">
- <img src="[https://user-images.githubusercontent.com/101847688/175663112-2f16f5c8-e91e-40fb-8f8e-e1e9510e7b45.png](https://elinkling.net/wp-content/uploads/2022/06/What-Is-Atomic-Swap.webp)">
+ <img src="https://elinkling.net/wp-content/uploads/2022/06/What-Is-Atomic-Swap.webp">
 </p>
 # Atomic Swap
 
