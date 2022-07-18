@@ -6,7 +6,7 @@
 
 Smart Contracts to connect with JuiceBox contracts to facilitate an Atomic Swap of member tokens to index tokens.
 
-<h2 style='color:red'>JuiceBox Contracts Needed - Rinkeby</h2>
+<h2 color='red'>JuiceBox Contracts Needed - Rinkeby</h2>
 
 ## JuiceBox Contracts Needed - Rinkeby
 JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
