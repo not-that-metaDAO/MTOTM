@@ -12,46 +12,46 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 
 ## * Price Feed Initilization
 
-####Step 1 - Calculate Price of Token for Feed
+#### Step 1 - Calculate Price of Token for Feed
 - ($ value of tokens / $ETH price)  /  Project token amt  = Feed Price
 
-####Step 2 - Create ‘fake price’ Feed Contract
+#### Step 2 - Create ‘fake price’ Feed Contract
 - Import IJBPriceFeed
 - Set currentPrice() = Feed Price
 
-####Step 3 - Create Price Contract
+#### Step 3 - Create Price Contract
 - addFeedFor(2, 1, Feed Contract)
 - Use 2 for currency param
 - Use 1 for base_currency param
 
-Step 4 - Create SingleTokenPaymentTerminalStore Contract
+#### Step 4 - Create SingleTokenPaymentTerminalStore Contract
 - Use Price contract in constructor
 
 ## * Atomic Swap Implementation
 
-####Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
+#### Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
 - Use Price and SingleTokenPaymentTerminalStore contracts in constructor
 - use 1 for currency param
 - use 2 for base_currency param
 
 
-####Step 2 - Create Index Project Template - Etherscan
+#### Step 2 - Create Index Project Template - Etherscan
 - JBController.launchProjectFor()
 - Can also be done with Juicebox.money site
 - Add terminal(s) deployed for projects 
 
-####Step 3 - Issue token for index
+#### Step 3 - Issue token for index
 - JBController.issueTokenFor()
 
-####Step 4 - Pay function on ERC20Terminal
+#### Step 4 - Pay function on ERC20Terminal
 - Done after user approves Terminal to send token – ProjectToken.approve(ERC20Terminal)
 - ERC20Terminal.pay()
 
-####Step 5 -  Projects claim tokens from project
+#### Step 5 -  Projects claim tokens from project
 - JBTokenStore.claimFor(JBTokenStore.unclaimedBalance())
 
-####Step 6 - Redeem tokens set up for Terminal to send back in a specific time frame if Rage Quit is allowed
+#### Step 6 - Redeem tokens set up for Terminal to send back in a specific time frame if Rage Quit is allowed
 - ERC20Terminal.redeemTokensOf()
 - Token count used to redeem is project's index token balance
 
