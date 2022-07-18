@@ -2,7 +2,7 @@
  <img src="https://elinkling.net/wp-content/uploads/2022/06/What-Is-Atomic-Swap.webp">
 </p>
 
-<h1 align="center">💡 Atomic Swap</h1>
+<h1 align="center">Atomic Swap 💡</h1>
 
 Smart Contracts to connect with JuiceBox contracts to facilitate an Atomic Swap of member tokens to index tokens.
 
