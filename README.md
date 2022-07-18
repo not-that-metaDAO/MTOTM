@@ -54,7 +54,7 @@ Step 6 - Redeem tokens set up for Terminal to send back in a specific time frame
 
 ## Acknowledgements
 
- - Thanks to the [Juicebox Team](https://github.com/jbx-protocol) for providing the contracts to build the Atomic Swap.
+Thanks to the [Juicebox Team](https://github.com/jbx-protocol) for providing the contracts to build the Atomic Swap.
 
 
 ## Support
