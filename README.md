@@ -7,6 +7,7 @@
 Smart Contracts to connect with JuiceBox contracts to facilitate an Atomic Swap of member tokens to index tokens.
 ## JuiceBox Contracts Needed - Rinkeby
 JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
+
 JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 
 ## * Price Feed Initilization
