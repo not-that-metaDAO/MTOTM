@@ -53,9 +53,12 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 #### Step 5 -  Projects claim tokens from project
 - JBTokenStore.claimFor(JBTokenStore.unclaimedBalance())
 
-#### Step 6 - Redeem tokens set up for Terminal to send back in a specific time frame if Rage Quit is allowed
+#### If Rage Quit is allowed, redeem index tokens set up for Terminal to send back project tokens
 - ERC20Terminal.redeemTokensOf()
 - Token count used to redeem is project's index token balance
+
+#### If reserved tokens are set, send reserved tokens to designated address(s)
+- JBController.distributeReservedTokensOf()
 
 
 
