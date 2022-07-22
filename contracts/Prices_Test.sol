@@ -59,27 +59,27 @@ contract Prices is Ownable, IJBPrices {
     uint256 _base,
     uint256 _decimals
   ) external view override returns (uint256) {
-      currentPrice();
+    return currentPrice();
   }
 
    function currentPrice()
-    public
+    internal
     view
     returns (uint256 price) {
-        uint256 ETHprice = prices.priceFor(2,1,18);
-        price = ((tokenValue * 10**18 / ETHprice) * 10**18) / tokenAmt;
+    uint256 ETHprice = prices.priceFor(2,1,18);
+    price = ((tokenValue * 10**18 / ETHprice) * 10**18) / tokenAmt;
     }
 
    function updateValue(uint256 _value)
      public
      onlyOwner {
-         tokenValue = _value;
+     tokenValue = _value;
      }
 
    function updateAmt(uint256 _amt)
      public
      onlyOwner {
-         tokenAmt = _amt;
+     tokenAmt = _amt;
      }
   //*********************************************************************//
   // ---------------------------- constructor -------------------------- //
