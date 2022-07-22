@@ -35,11 +35,11 @@ contract Prices is Ownable, IJBPrices {
   */
   mapping(uint256 => mapping(uint256 => IJBPriceFeed)) public override feedFor;
 
-    IJBPrices prices = IJBPrices(0xFF1D73AB28140b574Bb7A90e9fBCeD1eDAFce5c1);
+  IJBPrices prices = IJBPrices(0xFF1D73AB28140b574Bb7A90e9fBCeD1eDAFce5c1);
 
-    uint256 tokenValue;
+  uint256 tokenValue;
 
-    uint256 tokenAmt;
+  uint256 tokenAmt;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -62,25 +62,25 @@ contract Prices is Ownable, IJBPrices {
     return currentPrice();
   }
 
-   function currentPrice()
+  function currentPrice()
     internal
     view
     returns (uint256 price) {
     uint256 ETHprice = prices.priceFor(2,1,18);
     price = ((tokenValue * 10**18 / ETHprice) * 10**18) / tokenAmt;
-    }
+  }
 
-   function updateValue(uint256 _value)
-     public
-     onlyOwner {
-     tokenValue = _value;
-     }
+  function updateValue(uint256 _value) 
+    public
+    onlyOwner {
+    tokenValue = _value;
+  }
 
-   function updateAmt(uint256 _amt)
-     public
-     onlyOwner {
-     tokenAmt = _amt;
-     }
+  function updateAmt(uint256 _amt)
+    public
+    onlyOwner {
+    tokenAmt = _amt;
+  }
   //*********************************************************************//
   // ---------------------------- constructor -------------------------- //
   //*********************************************************************//
