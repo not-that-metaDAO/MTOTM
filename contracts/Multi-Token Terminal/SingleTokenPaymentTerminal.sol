@@ -44,11 +44,11 @@ abstract contract JBSingleTokenPaymentTerminal is ERC165, IJBSingleTokenPaymentT
   //*********************************************************************//
 
 
-  function acceptsToken(address _token, uint256 _projectId) external view override returns (bool result) {
+  function acceptsToken(address[] calldata _token, uint256 _projectId) external view override returns (bool result) {
     _projectId; // Prevents unused var compiler and natspec complaints.
     uint8 i;
     for(i=0; i<= token.length; i++) {
-        if(token[i] == _token)
+        if(token[i] == _token[i])
             result = true;
     }
 
