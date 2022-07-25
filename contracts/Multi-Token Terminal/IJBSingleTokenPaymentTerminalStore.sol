@@ -3,7 +3,7 @@ pragma solidity 0.8.6;
 
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/structs/JBFundingCycle.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/structs/JBTokenAmount.sol';
-import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBDirectory.sol';
+import './IJBDirectory.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBFundingCycleStore.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPayDelegate.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPrices.sol';
