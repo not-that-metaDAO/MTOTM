@@ -4,10 +4,10 @@ pragma solidity 0.8.6;
 import '@openzeppelin/contracts/token/ERC721/IERC721.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/structs/JBFee.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBAllowanceTerminal.sol';
-import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBDirectory.sol';
+import './IJBDirectory.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBFeeGauge.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPayDelegate.sol';
-import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPaymentTerminal.sol';
+import './IJBPaymentTerminal.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPayoutTerminal.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPrices.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBProjects.sol';
@@ -15,7 +15,7 @@ import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/i
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBRedemptionTerminal.sol';
 import './IJBSingleTokenPaymentTerminal.sol';
 import './IJBSingleTokenPaymentTerminalStore.sol';
-import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBSplitsStore.sol';
+import './IJBSplitsStore.sol';
 
 interface IJBPayoutRedemptionPaymentTerminal is
   IJBPaymentTerminal,
