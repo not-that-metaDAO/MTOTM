@@ -329,6 +329,9 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
 
     @return The number of tokens minted for the beneficiary, as a fixed point number with 18 decimals.
   */
+
+
+
   function pay(
     uint256 _projectId,
     uint256 _amount,
@@ -354,8 +357,9 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     if (msg.value > 0) revert NO_MSG_VALUE_ALLOWED();
 
       // Transfer tokens to this terminal from the msg sender.
-      _transferFrom(msg.sender, payable(address(this)), _amount);
+      _transferFrom(msg.sender, payable(address(this)), _amount, _token);
     }
+    
     // If this terminal's token is ETH, override _amount with msg.value.
     else _amount = msg.value;
 
@@ -527,7 +531,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     // Transfer the balance if needed.
     if (balance > 0) {
       // Trigger any inherited pre-transfer logic.
-      _beforeTransferTo(address(_to), balance);
+      _beforeTransferTo(address(_to), balance, _token);
 
       // If this terminal's token is ETH, send it in msg.value.
       uint256 _payableValue = _token == JBTokens.ETH ? balance : 0;
@@ -564,7 +568,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
       if (msg.value > 0) revert NO_MSG_VALUE_ALLOWED();
 
       // Transfer tokens to this terminal from the msg sender.
-      _transferFrom(msg.sender, payable(address(this)), _amount);
+      _transferFrom(msg.sender, payable(address(this)), _amount, _token);
     }
     // If the terminal's token is ETH, override `_amount` with msg.value.
     else _amount = msg.value;
@@ -692,7 +696,8 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   function _transferFrom(
     address _from,
     address payable _to,
-    uint256 _amount
+    uint256 _amount,
+    address _token
   ) internal virtual;
 
   /** 
@@ -702,7 +707,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     @param _to The address to which the transfer is going.
     @param _amount The amount of the transfer, as a fixed point number with the same number of decimals as this terminal.
   */
-  function _beforeTransferTo(address _to, uint256 _amount) internal virtual;
+  function _beforeTransferTo(address _to, uint256 _amount, address _token) internal virtual;
 
   /**
     @notice
@@ -782,7 +787,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     }
 
     // Send the reclaimed funds to the beneficiary.
-    if (reclaimAmount > 0) _transferFrom(address(this), _beneficiary, reclaimAmount);
+    if (reclaimAmount > 0) _transferFrom(address(this), _beneficiary, reclaimAmount, _token);
 
     emit RedeemTokens(
       _fundingCycle.configuration,
@@ -898,7 +903,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
 
       // Transfer any remaining balance to the project owner.
       if (netLeftoverDistributionAmount > 0)
-        _transferFrom(address(this), _projectOwner, netLeftoverDistributionAmount);
+        _transferFrom(address(this), _projectOwner, netLeftoverDistributionAmount, _token);
     }
 
     emit DistributePayouts(
@@ -979,7 +984,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
 
       // Transfer any remaining balance to the beneficiary.
       if (netDistributedAmount > 0)
-        _transferFrom(address(this), _beneficiary, netDistributedAmount);
+        _transferFrom(address(this), _beneficiary, netDistributedAmount, _token);
     }
 
     emit UseAllowance(
@@ -1057,7 +1062,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
           }
 
           // Trigger any inherited pre-transfer logic.
-          _beforeTransferTo(address(_split.allocator), _netPayoutAmount);
+          _beforeTransferTo(address(_split.allocator), _netPayoutAmount, _token);
 
           // If this terminal's token is ETH, send it in msg.value.
           uint256 _payableValue = _token == JBTokens.ETH ? _netPayoutAmount : 0;
@@ -1123,7 +1128,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
             }
 
             // Trigger any inherited pre-transfer logic.
-            _beforeTransferTo(address(_terminal), _netPayoutAmount);
+            _beforeTransferTo(address(_terminal), _netPayoutAmount, _token);
 
             // If this terminal's token is ETH, send it in msg.value.
             uint256 _payableValue = _token == JBTokens.ETH ? _netPayoutAmount : 0;
@@ -1167,7 +1172,8 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
           _transferFrom(
             address(this),
             _split.beneficiary != address(0) ? _split.beneficiary : payable(msg.sender),
-            _netPayoutAmount
+            _netPayoutAmount,
+            _token
           );
         }
 
@@ -1243,7 +1249,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
       _pay(_amount, _token, address(this), _PROTOCOL_PROJECT_ID, _beneficiary, 0, false, '', bytes('')); // Use the local pay call.
     else {
       // Trigger any inherited pre-transfer logic.
-      _beforeTransferTo(address(_terminal), _amount);
+      _beforeTransferTo(address(_terminal), _amount, _token);
 
       // If this terminal's token is ETH, send it in msg.value.
       uint256 _payableValue = _token == JBTokens.ETH ? _amount : 0;
