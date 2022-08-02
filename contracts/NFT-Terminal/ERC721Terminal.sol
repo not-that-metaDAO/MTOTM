@@ -2,7 +2,7 @@
 pragma solidity 0.8.6;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/abstract/JBPayoutRedemptionPaymentTerminal.sol";
+import "./Payout.sol";
 
 /** 
   @notice 
@@ -47,7 +47,6 @@ contract JBERC20PaymentTerminal is JBPayoutRedemptionPaymentTerminal {
   )
     JBPayoutRedemptionPaymentTerminal(
       address(_token),
-      18,
       _currency,
       _baseWeightCurrency,
       _payoutSplitsGroup,
@@ -92,5 +91,13 @@ contract JBERC20PaymentTerminal is JBPayoutRedemptionPaymentTerminal {
   function _beforeTransferTo(address _to, uint256 _id) internal override {
     IERC721(token).approve(_to, _id);
   }
-}
 
+  function decimalsForToken(address _token) external view override returns (uint256) {
+      return 18;
+  }
+
+    function decimals() external view override returns (uint256) {
+        return 18;
+    }
+
+}
