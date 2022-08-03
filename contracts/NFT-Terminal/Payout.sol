@@ -6,7 +6,7 @@ import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@paulrberg/contracts/math/PRBMath.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBController.sol';
-import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPayoutRedemptionPaymentTerminal.sol';
+import './IJBPayout.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBConstants.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBCurrencies.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBFixedPointNumber.sol';
@@ -183,7 +183,9 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
   //*********************************************************************//
-
+   function onERC721Received(address, address, uint256 , bytes memory) public pure returns(bytes4) {
+       return 0x150b7a02;
+   }
   /**
     @notice
     Gets the current overflowed amount in this terminal for a specified project, in terms of ETH.
@@ -351,7 +353,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
 
     return
       _pay(
-        _id,
+        1,
         msg.sender,
         _projectId,
         _beneficiary,
@@ -382,6 +384,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   */
   function redeemTokensOf(
     address _holder,
+    uint256 _id,
     uint256 _projectId,
     uint256 _tokenCount,
     address _token,
@@ -401,6 +404,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     return
       _redeemTokensOf(
         _holder,
+        _id,
         _projectId,
         _tokenCount,
         _minReturnedTokens,
@@ -709,6 +713,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   */
   function _redeemTokensOf(
     address _holder,
+    uint256 _id,
     uint256 _projectId,
     uint256 _tokenCount,
     uint256 _minReturnedTokens,
@@ -767,7 +772,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     }
 
     // Send the reclaimed funds to the beneficiary.
-    if (reclaimAmount > 0) _transferFrom(address(this), _beneficiary, reclaimAmount);
+    if (reclaimAmount > 0) _transferFrom(address(this), _beneficiary, _id);
 
     emit RedeemTokens(
       _fundingCycle.configuration,
