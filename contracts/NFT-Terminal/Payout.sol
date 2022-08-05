@@ -59,6 +59,7 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   error REDEEM_TO_ZERO_ADDRESS();
   error TERMINAL_IN_SPLIT_ZERO_ADDRESS();
   error TERMINAL_TOKENS_INCOMPATIBLE();
+  error NOT_ORIGINAL_OWNER();
 
   //*********************************************************************//
   // ---------------------------- modifiers ---------------------------- //
@@ -179,6 +180,8 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     _address The address that can be paid toward.
   */
   mapping(address => bool) public override isFeelessAddress;
+
+  mapping(address => uint) nftOwner;
 
   //*********************************************************************//
   // ------------------------- external views -------------------------- //
@@ -351,6 +354,9 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     // If this terminal's token is ETH, override _amount with msg.value.
     else _id = msg.value;
 
+    // Map id to beneficiary.
+    nftOwner[_beneficiary] = _id;
+
     return
       _pay(
         1,
@@ -401,6 +407,9 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
   {
     _token; // Prevents unused var compiler and natspec complaints.
 
+    // Check if redeemer is owner of NFT.
+    if(nftOwner[_holder] != _id)
+      revert 
     return
       _redeemTokensOf(
         _holder,
