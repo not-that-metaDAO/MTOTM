@@ -4,7 +4,7 @@ pragma solidity 0.8.6;
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '@paulrberg/contracts/math/PRBMath.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBController.sol';
-import './IJBSingleTokenPaymentTerminalStore.sol';
+import './TESTIJBSingleTokenTerminal.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBConstants.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBCurrencies.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBFixedPointNumber.sol';
@@ -720,7 +720,7 @@ contract JBSingleTokenPaymentTerminalStore is ReentrancyGuard, IJBSingleTokenPay
     if(param._tokenCount != token.balanceOf(param._holder, param._projectId))
       revert PARTIAL_BALANCE_SENT();
 
-    return 0;
+    return 1;
 
   }
 
