@@ -4,7 +4,7 @@
 
 <h1 align="center">Atomic Swap 💡</h1>
 
-These smart contracts extend JuiceBox contracts to facilitate a many to one to many atomic swap of member tokens to index tokens. 
+These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to index tokens. 
 
 This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.  
 
