@@ -26,19 +26,19 @@ For the MTOTM to work, there needs to be a Price Feed set up for each payment te
 - Import IJBPriceFeed
 - Set currentPrice() = Feed Price
 
-#### Step 3 - Create Price Contract
+#### Step 3 - Create [Price](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol) Contract
 - addFeedFor(2, 1, Feed Contract)
 - Use 2 for currency param
 - Use 1 for base_currency param
 
-#### Step 4 - Create SingleTokenPaymentTerminalStore Contract
+#### Step 4 - Create [SingleTokenPaymentTerminalStore](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol) Contract
 - Use Price contract in constructor
 
 ## Many to One to Many swap implementation
 
 These steps provide Terminal contracts for member projects to swap their tokens for an index token which represents a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
 
-#### Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
+#### Step 1 - Deploy [ERC20Terminal](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/ERC20Terminal.sol) – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
 - Use Price and SingleTokenPaymentTerminalStore contracts in constructor
 - use 1 for currency param
