@@ -6,8 +6,9 @@
 
 These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to index tokens. 
 
-This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.  
+This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.
 
+With our protocol, MTOTEM provides the FDCAO platform a one-stop-shop for fundraising and indexation with minimal friction.
 
 ## JuiceBox Contracts Needed - Rinkeby
 JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
@@ -15,6 +16,8 @@ JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
 JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 
 ## Price Feed Initilization
+
+For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' the terminal will use to mint index tokens at a rate specified by the 'price'.
 
 #### Step 1 - Calculate Price of Token for Feed
 - ($ value of tokens / $ETH price)  /  Project token amt  = Feed Price
@@ -32,6 +35,8 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 - Use Price contract in constructor
 
 ## Many to one to many swap implementation
+
+These steps provide a Terminal contract for member projects to swap their tokens for an index token representing a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
 
 #### Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
