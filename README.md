@@ -69,7 +69,13 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 
 
 
+## What's Next??
 
+#### Multi-Token Terminals
+Currently in development is a Multi-Token terminal. This will eliminate the need for a terminal to be deployed for each member DAO in a cohort, instead deploying one terminal for all cohort members while reducing gas costs and optimizing deployments. Please see [Multi-Token](https://github.com/The-Funding-Cooperative-DAO/MTOTM/tree/main/contracts/Multi-Token%20Terminal) for more details.
+
+#### ERC-721 and ERC-1155 Terminals
+Currently, our MTOTM only supports ERC-20 token swaps. There are many interesting cases for semi and non fungible token indexes, and we plan to build this functionality. Check out [NFT-Terminal](https://github.com/The-Funding-Cooperative-DAO/MTOTM/tree/main/contracts/NFT-Terminal).
 
 
 ## Acknowledgements
