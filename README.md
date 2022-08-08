@@ -4,7 +4,9 @@
 
 <h1 align="center">Atomic Swap 💡</h1>
 
-Smart Contracts to connect with JuiceBox contracts to facilitate an Atomic Swap of member tokens to index tokens.
+These smart contracts extend JuiceBox contracts to facilitate a many to one to many atomic swap of member tokens to index tokens. 
+
+This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.  
 
 
 ## JuiceBox Contracts Needed - Rinkeby
@@ -29,7 +31,7 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 #### Step 4 - Create SingleTokenPaymentTerminalStore Contract
 - Use Price contract in constructor
 
-## Atomic Swap Implementation
+## Many to one to many swap implementation
 
 #### Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
@@ -67,7 +69,7 @@ JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
 
 ## Acknowledgements
 
-Thanks to the [Juicebox Team](https://github.com/jbx-protocol) for providing the contracts to build the Atomic Swap.
+Thanks to the [Juicebox Team](https://github.com/jbx-protocol) for providing the contracts to build the Many to one to Many Swap.
 
 
 ## Support
