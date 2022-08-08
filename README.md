@@ -34,9 +34,9 @@ For the MTOTM to work, there needs to be a Price Feed set up for each payment te
 #### Step 4 - Create SingleTokenPaymentTerminalStore Contract
 - Use Price contract in constructor
 
-## Many to one to many swap implementation
+## Many to One to Many swap implementation
 
-These steps provide a Terminal contract for member projects to swap their tokens for an index token representing a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
+These steps provide Terminal contracts for member projects to swap their tokens for an index token which represents a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
 
 #### Step 1 - Deploy ERC20Terminal – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
