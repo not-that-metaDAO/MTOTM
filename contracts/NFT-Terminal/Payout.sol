@@ -409,7 +409,8 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
 
     // Check if redeemer is owner of NFT.
     if(nftOwner[_holder] != _id)
-      revert 
+      revert NOT_ORIGINAL_OWNER();
+      
     return
       _redeemTokensOf(
         _holder,
