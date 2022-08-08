@@ -2,7 +2,7 @@
  <img src="https://elinkling.net/wp-content/uploads/2022/06/What-Is-Atomic-Swap.webp">
 </p>
 
-<h1 align="center">Atomic Swap 💡</h1>
+<h1 align="center">MTOTM 💡</h1>
 
 These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to index tokens. 
 
