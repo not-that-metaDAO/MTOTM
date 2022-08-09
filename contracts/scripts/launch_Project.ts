@@ -21,7 +21,7 @@ export const launch = async (contractName: string, args: Array<any>, accountInde
 
     const contract = new ethers.Contract('0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a', metadata.abi, signer)
 
-    const launch = await contract.launchProjectFor(args) 
+    const launch = await contract.launchProjectFor(...args) 
 
     return launch
 
