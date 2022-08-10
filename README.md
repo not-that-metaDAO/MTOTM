@@ -17,7 +17,7 @@ With our protocol, MTOTM provides the FDCAO platform a one-stop-shop for fundrai
 - Change 'owner' var in 'Quick_Launch.ts' to your address.
 - Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.
 - Right-click => Run 'Quick_Launch.ts' script, accept all three transcations, note the tx-hash of the project to load into Etherscan for the Project ID.
-- Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. See Steps 3 - 6 in 'Many to One to Many swap implementation' below to 
+- Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. See Steps 3 - 6 in 'Many to One to Many swap implementation' below to complete the MTOTM swap.
 
 
 ## JuiceBox Contracts Needed - Rinkeby
