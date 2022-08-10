@@ -1,5 +1,5 @@
-// This script can be used to deploy the "Storage" contract using ethers.js library.
-// Please make sure to compile "./contracts/1_Storage.sol" file before running this script.
+// This script can be used to launch a basic MTOTM using Juicebox Contracts already deployed to Rinkeby.
+// Please make sure to compile "JBController, ERC20Terminal, and Token" files before running this script.
 // And use Right click -> "Run" from context menu of the file to run the script. Shortcut: Ctrl+Shift+S
 
 import { deploy } from './launch'
