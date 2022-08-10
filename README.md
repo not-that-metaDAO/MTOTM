@@ -10,7 +10,7 @@ This allows for many DAOs to do a swap together, thereby creating a shared token
 
 With our protocol, MTOTM provides the FDCAO platform a one-stop-shop for fundraising and indexation with minimal friction.
 
-##Quick Start
+## Quick Start
 #### Remix IDE
 - Load ERC20Terminal.sol, JBController.sol, and Token.sol, and scripts folder via load from Github on Remix IDE Homepage.
 - Compile contracts and enable optimization of 200 in Compiler tab.
