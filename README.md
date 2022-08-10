@@ -10,6 +10,16 @@ This allows for many DAOs to do a swap together, thereby creating a shared token
 
 With our protocol, MTOTM provides the FDCAO platform a one-stop-shop for fundraising and indexation with minimal friction.
 
+##Quick Start
+#### Remix IDE
+- Load ERC20Terminal.sol, JBController.sol, and Token.sol, and scripts folder via load from Github on Remix IDE Homepage.
+- Compile contracts and enable optimization of 200 in Compiler tab.
+- Change 'owner' var in Quick_Launch.ts to your address.
+- Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.
+- Right-click => Run 'Quick_Launch.ts' script, note the tx-hash of the project to load into Etherscan for the Project ID.
+- Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal.
+
+
 ## JuiceBox Contracts Needed - Rinkeby
 JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
 
