@@ -66,15 +66,15 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 #### Step 4 - Pay function on ERC20Terminal
 - Done after user approves Terminal to send token – Token.approve(ERC20Terminal)
 - ERC20Terminal.pay()
-- pay.params {
+- pay.params {<br />
 _project_ID = created in step 2 <br />
-_amount = token amount approved above<br />
-_token = token address<br />
+_amount  = token amount approved above<br />
+_token  = token address<br />
 _beneficiary = your address<br />
 _minReturnedTokens = 0<br />
 _preferClaimedTokens = false<br />
 _memo = any string<br />
-_metadata = 0x0000
+_metadata = 0x0000<br />
 }
 
 #### Step 5 -  Projects claim tokens from project
