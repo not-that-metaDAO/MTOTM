@@ -12,12 +12,12 @@ With our protocol, MTOTM provides the FDCAO platform a one-stop-shop for fundrai
 
 ## Quick Start
 #### Remix IDE
-- Load ERC20Terminal.sol, JBController.sol, and Token.sol, and scripts folder via load from Github on Remix IDE Homepage.
+- Load all .sol contracts and scripts folder via load from Github on Remix IDE Homepage.
 - Compile contracts and enable optimization of 200 in Compiler tab.
 - Change 'owner' var in 'Quick_Launch.ts' to your address.
 - Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.
 - Right-click => Run 'Quick_Launch.ts' script, accept all three transcations, note the tx-hash of the project to load into Etherscan for the Project ID.
-- Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal.
+- Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. See Steps 3 - 6 in 'Many to One to Many swap implementation' below to 
 
 
 ## JuiceBox Contracts Needed - Rinkeby
@@ -60,17 +60,27 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 - Can also be done with Juicebox.money site
 - Add terminal(s) deployed for projects 
 
-#### Step 3 - Issue token for index
+#### Step 3 - Issue token for index - Use Project ID created in Step 2
 - JBController.issueTokenFor()
 
 #### Step 4 - Pay function on ERC20Terminal
-- Done after user approves Terminal to send token – ProjectToken.approve(ERC20Terminal)
+- Done after user approves Terminal to send token – Token.approve(ERC20Terminal)
 - ERC20Terminal.pay()
+- pay.params {
+_project_ID = created in step 2
+_amount = token amount approved above
+_token = token address
+_beneficiary = your address
+_minReturnedTokens = 0
+_preferClaimedTokens = false
+_memo = any string
+_metadata = 0x0000
+}
 
 #### Step 5 -  Projects claim tokens from project
 - JBTokenStore.claimFor(JBTokenStore.unclaimedBalance())
 
-#### If Rage Quit is allowed, redeem index tokens set up for Terminal to send back project tokens
+#### Step 6 - If Rage Quit is allowed, redeem index tokens set up for Terminal to send back project tokens
 - ERC20Terminal.redeemTokensOf()
 - Token count used to redeem is project's index token balance
 
