@@ -67,13 +67,13 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 - Done after user approves Terminal to send token – Token.approve(ERC20Terminal)
 - ERC20Terminal.pay()
 - pay.params {
-_project_ID = created in step 2
-_amount = token amount approved above
-_token = token address
-_beneficiary = your address
-_minReturnedTokens = 0
-_preferClaimedTokens = false
-_memo = any string
+_project_ID = created in step 2 <br />
+_amount = token amount approved above<br />
+_token = token address<br />
+_beneficiary = your address<br />
+_minReturnedTokens = 0<br />
+_preferClaimedTokens = false<br />
+_memo = any string<br />
 _metadata = 0x0000
 }
 
