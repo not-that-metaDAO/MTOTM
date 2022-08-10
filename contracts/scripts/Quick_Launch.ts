@@ -20,15 +20,13 @@ let SingleTokenStore = '0xb814D3d1a33449830018eC945e98ae03532A8a1f';
 (async () => {
     try {
         const result = await deploy('Token', ['TEST', "T"])
-        console.log(`address: ${result.address}`)
         Token = result.address
         const terminal = await deploy('JBERC20PaymentTerminal', [Token,1,2,2,Operator,Projects,Directory,SplitsStore,Prices,SingleTokenStore,owner])
-        console.log(`address: ${terminal.address}`)
         Terminal = terminal.address
         const project = await launch('JBController', [owner,['QmbH96jj8RTJgC9526RdsFs5dPvcsRfiRuD9797JXzcvbw', 0],
         [0,1000000000000000,0,"0x0000000000000000000000000000000000000000"],[[false,false],0,10000,0,false,false,false,false,false,false,true,false,false,false,false,false,"0x0000000000000000000000000000000000000000"]
         0,[],[],["0x765A8b9a23F58Db6c8849315C04ACf32b2D55cF8", Terminal],'yes',])
-        console.log(`hash: ${project.hash}`)
+        console.log(`project hash: ${project.hash}`)
     } catch (e) {
         console.log(e.message)
     }
