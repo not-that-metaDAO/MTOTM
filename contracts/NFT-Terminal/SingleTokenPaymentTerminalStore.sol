@@ -4,7 +4,7 @@ pragma solidity 0.8.6;
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '@paulrberg/contracts/math/PRBMath.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBController.sol';
-import './TESTIJBSingleTokenTerminal.sol';
+import './IJBSingleTokenPaymentTerminalStore.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBConstants.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBCurrencies.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBFixedPointNumber.sol';
