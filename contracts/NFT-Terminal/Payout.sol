@@ -742,11 +742,14 @@ abstract contract JBPayoutRedemptionPaymentTerminal is
     {
       IJBRedemptionDelegate _delegate;
 
+      Param memory param;
+      param._holder = _holder;
+      param._projectId =  _projectId;
+      param._tokenCount = _tokenCount;
+      
       // Record the redemption.
       (_fundingCycle, reclaimAmount, _delegate, _memo) = store.recordRedemptionFor(
-        _holder,
-        _projectId,
-        _tokenCount,
+        param,
         _memo,
         _metadata
       );
