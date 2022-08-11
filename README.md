@@ -17,13 +17,13 @@ With our protocol, MTOTM provides the FCDAO platform a one-stop-shop for fundrai
 - Change 'owner' var in 'Quick_Launch.ts' to your address.
 - Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.
 - Right-click => Run 'Quick_Launch.ts' script, accept all three transcations, note the tx-hash of the project to load into Etherscan for the Project ID.
-- Skip to Steps 3 - 6 in 'Many to One to Many swap implementation' below to complete the MTOTM swap. Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. Interacting with JBController and JBTokenStore can be done using https://rinkeby.etherscan.io/address/0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a#writeContract and https://rinkeby.etherscan.io/address/0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85#writeContract
+- Skip to Steps 3 - 6 in 'Many to One to Many swap implementation' below to complete the MTOTM swap. Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. Interacting with JBController and JBTokenStore can be done by clicking the etherscan links below.
 
 
 ## JuiceBox Contracts Needed - Rinkeby
-JBController: 0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a
+JBController: [0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a](https://rinkeby.etherscan.io/address/0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a#writeContract)
 
-JBTokenStore: 0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85
+JBTokenStore: [0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85](https://rinkeby.etherscan.io/address/0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85#writeContract)
 
 ## Price Feed Initilization
 
