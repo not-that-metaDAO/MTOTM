@@ -8,7 +8,7 @@ These smart contracts extend JuiceBox contracts to facilitate a Many to One to M
 
 This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.
 
-With our protocol, MTOTM provides the FDCAO platform a one-stop-shop for fundraising and indexation with minimal friction.
+With our protocol, MTOTM provides the FCDAO platform a one-stop-shop for fundraising and indexation with minimal friction.
 
 ## Quick Start
 #### Remix IDE
