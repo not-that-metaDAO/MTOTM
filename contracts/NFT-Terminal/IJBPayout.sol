@@ -13,7 +13,7 @@ import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/i
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBProjects.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBRedemptionDelegate.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBSingleTokenPaymentTerminal.sol';
-import './TESTIJBSingleTokenTerminal.sol';
+import './IJBSingleTokenPaymentTerminalStore.sol';
 import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBSplitsStore.sol';
 
 interface IJBRedemptionTerminal {
