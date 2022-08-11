@@ -14,7 +14,7 @@ import "./Payout.sol";
   Inherits from -
   JBPayoutRedemptionPaymentTerminal: Includes convenience functionality for checking a message sender's permissions before executing certain transactions.
 */
-contract JBERC20PaymentTerminal is JBPayoutRedemptionPaymentTerminal {
+contract ERC721PaymentTerminal is JBPayoutRedemptionPaymentTerminal {
   //*********************************************************************//
   // -------------------------- constructor ---------------------------- //
   //*********************************************************************//
