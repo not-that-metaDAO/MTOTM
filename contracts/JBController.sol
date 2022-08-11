@@ -3,16 +3,16 @@ pragma solidity 0.8.6;
 
 import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 import '@paulrberg/contracts/math/PRBMath.sol';
-import './abstract/JBOperatable.sol';
-import './interfaces/IJBController.sol';
-import './interfaces/IJBMigratable.sol';
-import './interfaces/IJBOperatorStore.sol';
-import './interfaces/IJBPaymentTerminal.sol';
-import './interfaces/IJBProjects.sol';
-import './libraries/JBConstants.sol';
-import './libraries/JBFundingCycleMetadataResolver.sol';
-import './libraries/JBOperations.sol';
-import './libraries/JBSplitsGroups.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/abstract/JBOperatable.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBController.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBMigratable.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBOperatorStore.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBPaymentTerminal.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/interfaces/IJBProjects.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBConstants.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBFundingCycleMetadataResolver.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBOperations.sol';
+import 'https://github.com/jbx-protocol/juice-contracts-v2/blob/main/contracts/libraries/JBSplitsGroups.sol';
 
 /**
   @notice
