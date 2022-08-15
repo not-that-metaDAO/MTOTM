@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 
+export let owner;
 /**
  * Deploy the given contract
  * @param {string} contractName name of the contract to deploy
@@ -18,7 +19,8 @@ export const deploy = async (contractName: string, args: Array<any>, accountInde
     // 'web3Provider' is a remix global variable object
 
     const signer = (new ethers.providers.Web3Provider(web3Provider)).getSigner(accountIndex)
-    
+
+    owner = await signer.getAddress();
 
     const factory = new ethers.ContractFactory(metadata.abi, metadata.data.bytecode.object, signer)
 
@@ -27,14 +29,16 @@ export const deploy = async (contractName: string, args: Array<any>, accountInde
     // The contract is NOT deployed yet; we must wait until it is mined
     await contract.deployed()
     return contract
+   
 }
+
 
 export const launch = async (contractName: string, args: Array<any>, accountIndex?: number): Promise<ethers.Contract> => {    
 
-    console.log(`deploying ${contractName}`)
+    console.log(`launching project ${contractName}`)
     // Note that the script needs the ABI which is generated from the compilation artifact.
     // Make sure contract is compiled and artifacts are generated
-    const artifactsPath = `browser/github/The-Funding-Cooperative-DAO/MTOTM/contracts/artifacts/${contractName}.json` // Change this for different path
+    const artifactsPath = `browser/contracts/artifacts/${contractName}.json` // Change this for different path
 
     const metadata = JSON.parse(await remix.call('fileManager', 'getFile', artifactsPath))
     // 'web3Provider' is a remix global variable object
@@ -48,4 +52,3 @@ export const launch = async (contractName: string, args: Array<any>, accountInde
     return launch
 
 }
-
