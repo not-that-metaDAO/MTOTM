@@ -17,8 +17,8 @@ With our protocol, MTOTM provides the FCDAO platform a one-stop-shop for fundrai
 - 1,000,000 index tokens per ETH
 - Each member DAOs pays 100 ETH worth of their tokens (members will each receive 100,000,000 index tokens)
 - MTOTM will run over two funding cycles:
-    First cycle will allow "Rage Quit", giving ETH investors 90% of funds back and members may redeem for 100% of their tokens
-    Second cycle will distribute ETH to members with no redemptions allowed
+    - First cycle will allow "Rage Quit", giving ETH investors 90% of funds back and members may redeem for 100% of their tokens
+    - Second cycle will distribute ETH to members with no redemptions allowed
 #### Remix IDE
 - Load ERC20Terminal.sol, JBController.sol, and Token.sol contracts and scripts folder via load from Github on Remix IDE Homepage.
 - Compile contracts and enable optimization of 200 in Compiler tab.
