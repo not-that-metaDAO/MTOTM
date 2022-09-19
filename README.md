@@ -1,5 +1,5 @@
 <p align="center">
- <img src="https://elinkling.net/wp-content/uploads/2022/06/What-Is-Atomic-Swap.webp">
+ <img src="https://cdn.discordapp.com/attachments/966797609769529375/1015268142295027764/MTOTM.gif">
 </p>
 
 <h1 align="center">MTOTM 💡</h1>
