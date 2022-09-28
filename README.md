@@ -4,7 +4,7 @@
 
 <h1 align="center">MTOTM 💡</h1>
 
-These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to index tokens. 
+These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to meta-governance index tokens. 
 
 This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.
 
@@ -14,7 +14,7 @@ With our protocol, MTOTM enables platforms like Juicebox and others to use it as
 
 #### MTOTM params
 - 100% of ETH paid into terminal is routed to member DAOs, split equally
-- 1,000,000 index tokens per ETH
+- 1,000,000 meta-governance index tokens per ETH
 - Each member DAOs pays 100 ETH worth of their tokens (members will each receive 100,000,000 index tokens)
 - MTOTM will run over two funding cycles:
     - 1st cycle will allow "Rage Quit", giving ETH investors 90% of funds back and members may redeem for 100% of their tokens
@@ -34,24 +34,24 @@ JBTokenStore: [0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85](https://rinkeby.ether
 
 ## Price Feed Initilization
 
-For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' the terminal will use to mint index tokens at a rate specified by the 'price'.
+For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' the terminal will use to mint meta tokens at a rate specified by the 'price' specified in ETH. (i.e. 'Price' of .1 ETH per DAO token, at a mint rate of 100 meta-index tokens per ETH, would mint 10 meta-index tokens for every DAO token swapped.
 
 #### Step 1 - Calculate Price of Token for Feed
 - ($ value of tokens / $ETH price)  /  Project token amt  = Feed Price
 
-#### Step 2 - Create ‘fake price’ Feed Contract
+#### Step 2 - Deploy ‘fake price’ [Feed](https://github.com/not-that-metaDAO/MTOTM/blob/main/contracts/PriceFeed.sol) Contract
 - Import IJBPriceFeed
 - Set currentPrice() = Feed Price
 
-#### Step 3 - Create [Price](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol) Contract
+#### Step 3 - Deploy [Price](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol) Contract
 - addFeedFor(2, 1, Feed Contract)
 - Use 2 for currency param
 - Use 1 for base_currency param
 
-#### Step 4 - Create [SingleTokenPaymentTerminalStore](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol) Contract
+#### Step 4 - Deploy [SingleTokenPaymentTerminalStore](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol) Contract
 - Use Price contract in constructor
 
-## Many to One to Many swap implementation
+## MTOTM initialization
 
 These steps provide Terminal contracts for member projects to swap their tokens for an index token which represents a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
 
@@ -65,12 +65,15 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 #### Step 2 - Create Index Project Template - Etherscan
 - JBController.launchProjectFor()
 - Can also be done with Juicebox.money site
-- Add terminal(s) deployed for projects 
+- Add terminal(s) deployed for projects
 
-#### Step 3 - Issue token for index - Use Project ID created in Step 2
+## Many to One to Many swap implementation
+
+ 
+#### Step 1 - Issue token for index - Use Project ID created in Step 2
 - JBController.issueTokenFor()
 
-#### Step 4 - Pay function on ERC20Terminal
+#### Step 2 - Pay function on ERC20Terminal
 - Done after user approves Terminal to send token – Token.approve(ERC20Terminal)
 - ERC20Terminal.pay()
 - pay.params {<br />
@@ -84,10 +87,10 @@ _memo = any string<br />
 _metadata = 0x0000<br />
 }
 
-#### Step 5 -  Projects claim tokens from project
+#### Step 3 -  Projects claim tokens from project
 - JBTokenStore.claimFor(JBTokenStore.unclaimedBalance())
 
-#### Step 6 - If Rage Quit is allowed, redeem index tokens set up for Terminal to send back project tokens
+#### Step 4 - If Rage Quit is allowed, redeem index tokens set up for Terminal to send back project tokens
 - ERC20Terminal.redeemTokensOf()
 - Token count used to redeem is project's index token balance
 
