@@ -34,11 +34,11 @@ JBTokenStore: [0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85](https://rinkeby.ether
 
 ## Price Feed Initilization
 
-For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' the terminal will use to mint meta tokens at a rate specified by the 'price' specified in ETH. (i.e. 'Price' of .1 ETH per DAO token, at a mint rate of 100 meta-index tokens per ETH, would mint 10 meta-index tokens for every DAO token swapped.
+For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' of the project token that the terminal will use to mint meta tokens at a rate specified by the 'price' specified in ETH. (i.e. 'Price' of .1 ETH per DAO token, at a mint rate of 100 meta-index tokens per ETH, would mint 10 meta-index tokens for every DAO token swapped.
 
 #### Step 1 - Calculate Price of Token for Feed
 - We start with a value agreed to between DAOs and not-that-metaDAO to use for swap
-- (Value of DAO tokens in ETH)  /  Project token amt  = Feed Price
+- (Value of DAO tokens in ETH)  /  DAO token amt  = Feed Price
 
 #### Step 2 - Deploy ‘fake price’ [Feed](https://github.com/not-that-metaDAO/MTOTM/blob/main/contracts/PriceFeed.sol) Contract
 - Have currentPrice() return Feed Price calculated in Step 1
@@ -59,7 +59,7 @@ For the MTOTM to work, there needs to be a Price Feed set up for each payment te
 
 ## MTOTM initialization
 
-These steps provide Terminal contracts for member projects to swap their tokens for an index token which represents a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
+After Price Feed Initilization has been completed, Terminals need to be deployed for each DAO in the MTOTM swap. Terminals handle DAO tokens coming in and meta tokens going out. They communicate with a Juicebox project that is launched to define the terms of the swap (mint rates, redemptions, allocations). Lastly, the terminals will distribute DAO tokens to the metaDAO mult-sig to complete the swap.
 
 #### Step 1 - Deploy [ERC20Terminal](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/ERC20Terminal.sol) – Done Via Remix/Hardhat
 - One Terminal per token, allows members to pay tokens into index project and receive index tokens
@@ -75,7 +75,7 @@ These steps provide Terminal contracts for member projects to swap their tokens 
 
 ## Many to One to Many swap implementation
 
- 
+These steps provide Terminal contracts for member projects to swap their tokens for an index token which represents a cohort of projects participating in the funding cycle. Each member project needs to a terminal to handle swaps and perform 'rage quit' redemptions.  Other contracts used to issue an ERC-20 for the index and claim tokens are Juicebox contracts JBController and JBTokenStore, stated above.   
 #### Step 1 - Issue token for index - Use Project ID created in Step 2
 - JBController.issueTokenFor()
 
