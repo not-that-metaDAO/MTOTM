@@ -37,19 +37,20 @@ JBTokenStore: [0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85](https://rinkeby.ether
 For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' the terminal will use to mint meta tokens at a rate specified by the 'price' specified in ETH. (i.e. 'Price' of .1 ETH per DAO token, at a mint rate of 100 meta-index tokens per ETH, would mint 10 meta-index tokens for every DAO token swapped.
 
 #### Step 1 - Calculate Price of Token for Feed
-- ($ value of tokens / $ETH price)  /  Project token amt  = Feed Price
+- We start with a value agreed to between DAOs and not-that-metaDAO to use for swap
+- (Value of DAO tokens in ETH)  /  Project token amt  = Feed Price
 
 #### Step 2 - Deploy ‘fake price’ [Feed](https://github.com/not-that-metaDAO/MTOTM/blob/main/contracts/PriceFeed.sol) Contract
-- Import IJBPriceFeed
-- Set currentPrice() = Feed Price
+- Have currentPrice() return Feed Price calculated in Step 1
 
 #### Step 3 - Deploy [Price](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol) Contract
-- addFeedFor(2, 1, Feed Contract)
-- Use 2 for currency param
-- Use 1 for base_currency param
+- Execute addFeedFor(2, 1, Feed Contract)
 
 #### Step 4 - Deploy [SingleTokenPaymentTerminalStore](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol) Contract
-- Use Price contract in constructor
+- Constructor params:
+-- Directory [0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
+-- FundingCycleStore [0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+-- Use Price contract in constructor
 
 ## MTOTM initialization
 
