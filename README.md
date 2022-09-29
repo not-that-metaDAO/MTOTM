@@ -50,7 +50,9 @@ For the MTOTM to work, there needs to be a Price Feed set up for each payment te
 - Constructor params:
 
     Directory [0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
+    
     FundingCycleStore [0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+    
     Use Price contract in constructor
 
 ## MTOTM initialization
