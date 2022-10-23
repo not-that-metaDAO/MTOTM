@@ -1,74 +1,63 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <p align="center">
  <img src="https://cdn.discordapp.com/attachments/966797609769529375/1015268142295027764/MTOTM.gif">
 </p>
 
 <h1 align="center">MTOTM 💡</h1>
 
-<p></p>These smart contracts extend JuiceBox contracts to facilitate a Many to One to Many ("MTOTM") atomic swap of member tokens to meta-governance index tokens. 
-</p>
-<p>This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.
-</p>
-<p>With our protocol, MTOTM enables platforms like Juicebox and others to use it as a one-stop-shop for fundraising and indexation with minimal friction.
-</p>
-<h2>Quick Start</h2>
+Many to One to Many ("MTOTM") provides an atomic swap of member tokens to meta-governance index tokens. 
 
-<h4>MTOTM params</h4>
-<ul>100% of ETH paid into terminal is routed to member DAOs, split equally
-<li>1,000,000 meta-governance index tokens per ETH</li>
-<li>Each member DAOs pays 100 ETH worth of their tokens (members will each receive 100,000,000 index tokens)</li>
-    <ul><li>MTOTM will run over two funding cycles:</li>
-        <li>1st cycle will allow "Rage Quit", giving ETH investors 90% of funds back and members may redeem for 100% of their tokens</li>
-        <li>2nd cycle will distribute ETH to members with no redemptions allowed</li>
-</ul></ul>
-<h4>Remix IDE</h4>
-<ul>
-    <li>ERC20Terminal.sol, JBController.sol, and Token.sol contracts and scripts folder via load from Github on Remix IDE Homepage.</li>
-    <li>Compile contracts and enable optimization of 200 in Compiler tab.</li>
-    <li>Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.</li>
-    <li>Right-click => Run 'Quick_Launch.ts' script, accept all three transcations, note the tx-hash of the project to load into Etherscan to obtain the Project ID.</li>
-    <li>Skip to Steps 3 - 6 in 'Many to One to Many swap implementation' below to complete the MTOTM swap. Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. Interacting with JBController and JBTokenStore can be done by clicking the etherscan links below.</li>
-</ul>
+This allows for many DAOs to do a swap together, thereby creating a shared token that can be used for governance of a meta governance DAO and can be used for diversification by each of the DAOs as well.
 
-<h2>JuiceBox Contracts Needed - Rinkeby</h2>
-<p>JBController: <a href="https://rinkeby.etherscan.io/address/0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a#writeContract">0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a</a>
-</p>
-<p>JBTokenStore: <a href="https://rinkeby.etherscan.io/address/0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85#writeContract">0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85</a>
-</p>
-<h2>Price Feed Initilization</h2>
+With our protocol, MTOTM enables platforms like Juicebox and others to use it as a one-stop-shop for fundraising and indexation with minimal friction.
+
+## Quick Start
+
+#### MTOTM params
+- 100% of ETH paid into terminal is routed to member DAOs, split equally
+- 1,000,000 meta-governance index tokens per ETH
+- Each member DAOs pays 100 ETH worth of their tokens (members will each receive 100,000,000 index tokens)
+- MTOTM will run over two funding cycles:
+    - 1st cycle will allow "Rage Quit", giving ETH investors 90% of funds back and members may redeem for 100% of their tokens
+    - 2nd cycle will distribute ETH to members with no redemptions allowed
+#### Remix IDE
+- Load ERC20Terminal.sol, JBController.sol, and Token.sol contracts and scripts folder via load from Github on Remix IDE Homepage.
+- Compile contracts and enable optimization of 200 in Compiler tab.
+- Make sure your Deploy environment is set to 'Injected Provider-Metamask' and network says Rinkeby.
+- Right-click => Run 'Quick_Launch.ts' script, accept all three transcations, note the tx-hash of the project to load into Etherscan to obtain the Project ID.
+- Skip to Steps 3 - 6 in 'Many to One to Many swap implementation' below to complete the MTOTM swap. Interact with deployed contracts to approve the terminal, then pay and redeem tokens using the terminal. Interacting with JBController and JBTokenStore can be done by clicking the etherscan links below.
+
+
+## JuiceBox Contracts Needed - Rinkeby
+JBController: [0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a](https://rinkeby.etherscan.io/address/0xd96ecf0E07eB197587Ad4A897933f78A00B21c9a#writeContract)
+
+JBTokenStore: [0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85](https://rinkeby.etherscan.io/address/0x220468762c6cE4C05E8fda5cc68Ffaf0CC0B2A85#writeContract)
+
+## Price Feed Initilization
 
 For the MTOTM to work, there needs to be a Price Feed set up for each payment terminal. Normally, an oracle grabs current price data from a DEX like Uniswap, but we are mostly working with early-stage member projects without a liquid token. The following steps are needed pre-terminal deployment to create a 'price' of the project token that the terminal will use to mint meta tokens at a rate specified by the 'price' specified in ETH. (i.e. 'Price' of .1 ETH per DAO token, at a mint rate of 100 meta-index tokens per ETH, would mint 10 meta-index tokens for every DAO token swapped.
 
-<h4>Step 1 - Calculate Price of Token for Feed</h4>
-<ui>
-    <li>We start with a value agreed to between DAOs and not-that-metaDAO to use for swap</li>
-    <li>(Value of DAO tokens in ETH)  /  DAO token amt  = Feed Price</li>
-</ui>
-<h4>Step 2 - Deploy ‘fake price’ <a href="https://github.com/not-that-metaDAO/MTOTM/blob/main/contracts/PriceFeed.sol">Feed</a> Contract</h4>
-<ui>
-    <li>Have currentPrice() return Feed Price calculated in Step 1</li>
-</ui>
-<h4>Step 3 - Deploy <a href="https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol">Price</a> Contract</h4>
-<ui>
-    <li>Execute addFeedFor(2, 1, Feed Contract)</li>
-</ui>
-<h4>Step 4 - Deploy <a href="https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol">SingleTokenPaymentTerminalStore</a> Contract</h4>
-<ui>
-    <li><p>Constructor params {</p>
+#### Step 1 - Calculate Price of Token for Feed
+- We start with a value agreed to between DAOs and not-that-metaDAO to use for swap
+- (Value of DAO tokens in ETH)  /  DAO token amt  = Feed Price
 
-    <p>Directory [0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
-    </p>
-FundingCycleStore* [0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+#### Step 2 - Deploy ‘fake price’ [Feed](https://github.com/not-that-metaDAO/MTOTM/blob/main/contracts/PriceFeed.sol) Contract
+- Have currentPrice() return Feed Price calculated in Step 1
+
+#### Step 3 - Deploy [Price](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/Prices.sol) Contract
+- Execute addFeedFor(2, 1, Feed Contract)
+
+#### Step 4 - Deploy [SingleTokenPaymentTerminalStore](https://github.com/The-Funding-Cooperative-DAO/MTOTM/blob/main/contracts/SingleTokenPaymentTerminalStore.sol) Contract
+- Constructor params {
+
+    *Directory* [0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99](https://goerli.etherscan.io/address/0x8E05bcD2812E1449f0EC3aE24E2C395F533d9A99)
     
-Use Price contract from Step 3
-    </pre>
-    </li>
-</ui>
+    *FundingCycleStore* [0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55](https://goerli.etherscan.io/address/0xB9Ee9d8203467f6EC0eAC81163d210bd1a7d3b55)
+    
+    *Use Price contract from Step 3*
+    
+    }
 
-<h2>MTOTM initialization</h2>
+## MTOTM initialization
 
 After Price Feed Initilization has been completed, Terminals need to be deployed for each DAO in the MTOTM swap. Terminals handle DAO tokens coming in and meta tokens going out. They communicate with a Juicebox project that is launched to define the terms of the swap (mint rates, redemptions, allocations). Lastly, the terminals will distribute DAO tokens to the metaDAO mult-sig to complete the swap.
 
@@ -124,5 +113,7 @@ In development is a Multi-Token terminal. This will eliminate the need for a ter
 #### ERC-721 and ERC-1155 Terminals
 Currently, our MTOTM only supports ERC-20 token swaps. There are many interesting cases for semi and non fungible token indexes, and we plan to build this functionality. Check out [NFT-Terminal](https://github.com/The-Funding-Cooperative-DAO/MTOTM/tree/main/contracts/NFT-Terminal).
 
-</body>
-</html>
+
+## Acknowledgements
+
+Thanks to the [Juicebox Team](https://github.com/jbx-protocol) for providing the contracts to build the Many to one to Many Swap.
